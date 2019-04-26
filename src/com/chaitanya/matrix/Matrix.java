@@ -76,4 +76,20 @@ public class Matrix {
         }
         setMatrix(result);
     }
+
+    public void multiplyElementwise(Matrix mat) {
+        assert(this.getChannels() == mat.getChannels());
+        assert(this.getRows() == mat.getRows());
+        assert(this.getCols() == mat.getCols());
+        double[][][] result = new double[this.getChannels()][this.getRows()][this.getCols()];
+        double[][][] matArr = mat.getMatrix();
+        for(int i = 0; i < matrix.length; i++) {
+            for(int k = 0; k < matrix[i].length; k++) {
+                for(int j = 0; j < matrix[i][k].length; j++) {
+                    result[i][k][j] = matrix[i][k][j] * matArr[i][k][j];
+                }
+            }
+        }
+        setMatrix(result);
+    }
 }

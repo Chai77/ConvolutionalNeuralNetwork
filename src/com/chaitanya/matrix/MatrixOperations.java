@@ -38,4 +38,21 @@ public class MatrixOperations {
         }
         return new Matrix(result);
     }
+
+    public static Matrix multiplyElementwise(Matrix mat1, Matrix mat2) {
+        assert(mat1.getChannels() == mat2.getChannels());
+        assert(mat1.getRows() == mat2.getRows());
+        assert(mat1.getCols() == mat2.getCols());
+        double[][][] result = new double[mat1.getChannels()][mat1.getRows()][mat1.getCols()];
+        double[][][] mat1Arr = mat1.getMatrix();
+        double[][][] mat2Arr = mat2.getMatrix();
+        for(int i = 0; i < mat1Arr.length; i++) {
+            for(int k = 0; k < mat1Arr[i].length; k++) {
+                for(int j = 0; j < mat1Arr[i][k].length; j++) {
+                    result[i][k][j] = mat1Arr[i][k][j] * mat2Arr[i][k][j];
+                }
+            }
+        }
+        return new Matrix(result);
+    }
 }
