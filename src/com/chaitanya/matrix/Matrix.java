@@ -45,6 +45,7 @@ public class Matrix {
         this.cols = matrix[0][0].length;
     }
 
+    //Matrix multiplication 
     public void multiply(Matrix mat) {
         assert(mat.getChannels() == 1);
         assert(channels == 1);
@@ -65,6 +66,7 @@ public class Matrix {
         setMatrix(result);
     }
 
+    //Multiply by value
     public void multiply(double num) {
         double[][][] result = new double[this.getChannels()][this.getRows()][this.getCols()];
         for(int i = 0; i < matrix.length; i++) {
@@ -77,6 +79,7 @@ public class Matrix {
         setMatrix(result);
     }
 
+    //Important for backpropogation(Activations)
     public void multiplyElementwise(Matrix mat) {
         assert(this.getChannels() == mat.getChannels());
         assert(this.getRows() == mat.getRows());
@@ -91,5 +94,29 @@ public class Matrix {
             }
         }
         setMatrix(result);
+    }
+
+    //Method helps with flattening layers
+    public void reshape(int channels, int rows, int cols) {
+        assert(this.channels * this.rows * this.cols == channels * cols * rows);
+        double[][][] result = new double[channels][rows][cols];
+        int row = 0;
+        int col = 0;
+        int channel = 0;
+        int count = 0;
+        for(int i = 0; i < result.length; i++) {
+            for(int k = 0; k < result[i].length; k++) {
+                for(int j = 0; j < result[i][k].length; j++) {
+                    
+                }
+            }
+        }
+        setMatrix(result);
+    }
+
+    //Stride = 1
+    //Padding = "valid"
+    public void convolution(Matrix mat) {
+        //double[][][] result = new double[][[][];
     }
 }
